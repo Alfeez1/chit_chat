@@ -8,12 +8,16 @@ const socket = require('socket.io');
 require('dotenv').config();
 const path = require('path');
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://chit-chat-n1ul.onrender.com',
+  })
+);
 app.use(express.json());
-const MONGO_URL =
-  'mongodb+srv://alfeez:alfeez@cluster0.2z0sxnr.mongodb.net/?retryWrites=true&w=majority';
+// const MONGO_URL =
+//   'mongodb+srv://alfeez:alfeez@cluster0.2z0sxnr.mongodb.net/?retryWrites=true&w=majority';
 mongoose
-  .connect(MONGO_URL, {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -27,7 +31,7 @@ mongoose
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 const PORT = 5000;
-const server = app.listen(PORT, () =>
+const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
 const io = socket(server, {
@@ -52,6 +56,7 @@ io.on('connection', (socket) => {
   });
 });
 app.use(express.static(path.join(__dirname, '../public/build')));
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '../public/build/index.html'))
-);
+app.get('*', (req, res) => {
+  res.set('Access-Control-Allow-Origin', 'https://chit-chat-n1ul.onrender.com');
+  res.sendFile(path.join(__dirname, '../public/build/index.html'));
+});
