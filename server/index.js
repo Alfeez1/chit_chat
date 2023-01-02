@@ -10,7 +10,7 @@ const path = require('path');
 
 app.use(
   cors({
-    origin: 'http://localhost:5000',
+    origin: ['http://localhost:5000', 'https://chit-chat-client.onrender.com'],
   })
 );
 app.use(express.json());
