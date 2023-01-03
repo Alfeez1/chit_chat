@@ -37,7 +37,7 @@ const server = app.listen(process.env.PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: 'http://localhost:5000',
+    origin: ['https://chit-chat-client.onrender.com', 'http://localhost:5000'],
     credentials: true,
   },
 });
@@ -61,6 +61,6 @@ io.on('connection', (socket) => {
 //   res.set('Access-Control-Allow-Origin', 'http://localhost:5000');
 //   res.sendFile(path.join(__dirname, '../public/build/index.html'));
 // });
-app.get('/', (req, res) => {
-  res.send('Home Page');
-});
+// app.get('/', (req, res) => {
+//   res.send('Home Page');
+// });
