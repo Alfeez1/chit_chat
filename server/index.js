@@ -65,11 +65,11 @@ io.on('connection', (socket) => {
     }
   });
 });
-// app.use(express.static(path.join(__dirname, '../public/build')));
-// app.get('*', (req, res) => {
-//   res.set('Access-Control-Allow-Origin', 'http://localhost:5000');
-//   res.sendFile(path.join(__dirname, '../public/build/index.html'));
-// });
+app.use(express.static(path.join(__dirname, '../public/build')));
+app.get('*', (req, res) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:5000');
+  res.sendFile(path.join(__dirname, '../public/build/index.html'));
+});
 // app.get('/', (req, res) => {
 //   res.send('Home Page');
 // });
