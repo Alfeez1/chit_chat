@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import Logo from "../assets/logo.svg";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Logo from '../assets/logo.svg';
 
 export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
@@ -31,7 +31,7 @@ export default function Contacts({ contacts, changeChat }) {
                 <div
                   key={contact._id}
                   className={`contact ${
-                    index === currentSelected ? "selected" : ""
+                    index === currentSelected ? 'selected' : ''
                   }`}
                   onClick={() => changeCurrentChat(index, contact)}
                 >

@@ -15,13 +15,17 @@ app.use(
   })
 );
 app.use(express.json());
-// const MONGO_URL =
-//   'mongodb+srv://alfeez:alfeez@cluster0.2z0sxnr.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URL =
+  'mongodb+srv://alfeez:alfeez@cluster0.2z0sxnr.mongodb.net/?retryWrites=true&w=majority';
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    // process.env.
+    MONGO_URL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log('DB Connetion Successfull');
   })
@@ -33,7 +37,12 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 const PORT = 5000;
 const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
+  console.log(
+    `Server started on ${
+      // process.env.
+      PORT
+    }`
+  )
 );
 const io = socket(server, {
   cors: {
