@@ -46,7 +46,7 @@ const server = app.listen(process.env.PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: ['https://chit-chat-server.onrender.com'],
+    origin: ['https://chit-chat-client.onrender.com'],
     credentials: true,
   },
 });
