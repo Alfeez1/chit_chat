@@ -10,7 +10,7 @@ const path = require('path');
 
 app.use(
   cors({
-    origin: ['https://chit-chat-server.onrender.com'],
+    origin: ['http://localhost:5000', 'https://chit-chat-server.onrender.com'],
     credentials: true,
   })
 );
@@ -66,13 +66,10 @@ io.on('connection', (socket) => {
   });
 });
 app.use(express.static(path.join(__dirname, '../public/build')));
-// app.get('*', (req, res) => {
-//   res.set(
-//     'Access-Control-Allow-Origin',
-//     'https://chit-chat-server.onrender.com'
-//   );
-//   res.sendFile(path.join(__dirname, '../public/build/index.html'));
-// });
+app.get('*', (req, res) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:5000');
+  res.sendFile(path.join(__dirname, '../public/build/index.html'));
+});
 // app.get('/', (req, res) => {
 //   res.send('Home Page');
 // });
