@@ -66,13 +66,13 @@ io.on('connection', (socket) => {
   });
 });
 app.use(express.static(path.join(__dirname, '../public/build')));
-app.get('*', (req, res) => {
-  res.set(
-    'Access-Control-Allow-Origin',
-    'https://chit-chat-server.onrender.com'
-  );
-  res.sendFile(path.join(__dirname, '../public/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.set(
+//     'Access-Control-Allow-Origin',
+//     'https://chit-chat-server.onrender.com'
+//   );
+//   res.sendFile(path.join(__dirname, '../public/build/index.html'));
+// });
 // app.get('/', (req, res) => {
 //   res.send('Home Page');
 // });
