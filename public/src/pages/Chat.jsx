@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import styled from 'styled-components';
-import { allUsersRoute, host } from '../utils/APIRoutes';
+import { allUsersRoute, host, newhost } from '../utils/APIRoutes';
 import ChatContainer from '../components/ChatContainer';
 import Contacts from '../components/Contacts';
 import Welcome from '../components/Welcome';
@@ -27,7 +27,7 @@ export default function Chat() {
   }, []);
   useEffect(() => {
     if (currentUser) {
-      socket.current = io(host);
+      socket.current = io(newhost);
       socket.current.emit('add-user', currentUser._id);
     }
   }, [currentUser]);
